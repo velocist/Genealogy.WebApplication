@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "Genealogy": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost:55561",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:55561",
+      "hotReloadEnabled": false
+    }
+  }
+}

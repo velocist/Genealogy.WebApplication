@@ -1,0 +1,101 @@
+﻿@{
+	var viewProperties = ViewData["PropertiesView"] as CustomViewModel;
+}
+@if (!ViewData.ModelState.IsValid) {
+	ViewBag.ShowHide = "block";
+} else {
+	ViewBag.ShowHide = "none";
+}
+
+@if (!ViewData.ModelState.IsValid) {
+	@if (ViewData.ModelState.ErrorCount > 0) {
+		@if (!ViewData.ModelState.ContainsKey(WebStrings.ERROR)) {
+			<div id="errorDiv_@viewProperties.ControllerName" style="display: @ViewBag.ShowHide;">
+				<div class="alert alert-danger alert-dismissible" role="alert">
+					@foreach (var key in ViewData.ModelState.Keys) {
+						@foreach (var err in ViewData.ModelState[key].Errors) {
+							<li id="errorMessage_@key">
+								<a href="#@key" onclick="$('#@key').focus()">@key </a>@Html.Raw(@err.ErrorMessage)
+							</li>
+							<script>
+								$( window ).on( "load", function () {
+									$( "#@key" ).addClass( "border border-danger" );
+									$( '#errors' ).focus();
+								} );
+							</script>
+						}
+					}
+					<button type="button" class="btn-close" onclick="RemoveError()" aria-label="Close"></button>
+				</div>
+			</div>
+		}
+	}
+}
+<div id="alert">
+	@if (!ViewData.ModelState.IsValid) {
+		@if (ViewData.ModelState.ErrorCount > 0) {
+			@if (ViewData.ModelState.ContainsKey(WebStrings.WARN)) {
+				<div id="errorDiv_@viewProperties.ControllerName" style="display: @ViewBag.ShowHide;">
+					<div class="alert alert-warning alert-dismissible" role="alert">
+						@foreach (var err in ViewData.ModelState[WebStrings.WARN].Errors) {
+							<li id="errorMessage">
+								@Html.Raw(@err.ErrorMessage)
+							</li>
+							<script>
+								$( window ).on( "load", function () {
+									$( '#errors' ).focus();
+								} );
+							</script>
+						}
+						<button type="button" class="btn-close" onclick="RemoveError()" aria-label="Close"></button>
+					</div>
+				</div>
+			}
+		}
+	}
+
+	@if (!ViewData.ModelState.IsValid) {
+		@if (ViewData.ModelState.ErrorCount > 0) {
+			@if (ViewData.ModelState.ContainsKey(WebStrings.SUCCESS)) {
+				<div id="errorDiv_@viewProperties.ControllerName" style="display: @ViewBag.ShowHide;">
+					<div class="alert alert-success alert-dismissible" role="alert">
+						@foreach (var err in ViewData.ModelState[WebStrings.SUCCESS].Errors) {
+							<li id="errorMessage">
+								@Html.Raw(@err.ErrorMessage)
+							</li>
+							<script>
+								$( window ).on( "load", function () {
+									$( '#errors' ).focus();
+								} );
+							</script>
+						}
+						<button type="button" class="btn-close" onclick="RemoveError()" aria-label="Close"></button>
+					</div>
+				</div>
+			}
+		}
+	}
+</div>
+
+<script id="alertError" type="text/javascript">
+	/** Adds error into alert */
+	function AppendError( responseJSON, status ) {
+		$( '#errorDiv_@viewProperties.ControllerName' ).css( "display", "block" );
+		$( "#errors li" ).each( function ( index ) {
+			$( '#' + status ).remove();
+		} );
+		$( '#errors' ).append( '<li id="' + status + '">' + responseJSON + '</li>' );
+		$( "#errorDiv_@viewProperties.ControllerName" ).focus();
+	}
+
+	/** Removes errors of alert */
+	function RemoveError() {
+		$( '#errorDiv_@viewProperties.ControllerName' ).css( "display", "none" );
+		$( '#errors' ).html( '' );
+	}
+
+	function InputError( input ) {
+		$( "#" + input ).addClass( "border border-danger" );
+		$( "#" + input ).focus();
+	}
+</script>
