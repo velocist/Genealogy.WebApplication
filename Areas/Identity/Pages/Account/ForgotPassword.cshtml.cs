@@ -1,4 +1,6 @@
-﻿namespace Genealogy.WebApplication.Areas.Identity.Pages.Account {
+﻿
+
+namespace Genealogy.WebApplication.Areas.Identity.Pages.Account {
 	[AllowAnonymous]
 	public class ForgotPasswordModel : PageModel {
 		private readonly UserManager<User> _userManager;

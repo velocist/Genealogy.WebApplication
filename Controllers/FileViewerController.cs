@@ -14,7 +14,7 @@ namespace Genealogy.Controllers {
 		public FileViewerController(IStringLocalizer<SharedTranslations> sharedTranslations, IStringLocalizer<ViewsTranslations> viewTranslates, IDateTime date, IViewRender renderView, FSCatalogService baseService)
 			: base(sharedTranslations, viewTranslates, date, renderView, "FileViewer") {
 			var json = System.IO.File.ReadAllText("./Views/FileViewer/_Configure.json");
-			Views =		JsonHelper<ViewModel>.DeserializeToObject(json, false);
+			Views = JsonHelper<ViewModel>.DeserializeToObject(json, false);
 		}
 
 		[HttpGet]

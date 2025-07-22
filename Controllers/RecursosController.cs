@@ -1,5 +1,5 @@
-﻿using velocist.Services.Json;
-using velocist.Services.Json.Serialization;
+﻿using velocist.Services.Json.Serialization;
+
 namespace Genealogy.WebApplication.Controllers {
 
 	/// <summary>
