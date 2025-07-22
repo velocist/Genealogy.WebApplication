@@ -5,6 +5,7 @@
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<UserSecretsId>aspnet-velocist.WebApplication-AFCDCEE9-149C-4DBC-A892-29D1E3AE218E</UserSecretsId>
 		<Description>Genealogia 2024</Description>
+		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -94,13 +95,12 @@
 		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
 		<PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.6" />
 		<PackageReference Include="System.Diagnostics.PerformanceCounter" Version="9.0.6" />
+		<PackageReference Include="velocist.DataAccess" Version="1.0.0" />
+		<PackageReference Include="velocist.LogService" Version="1.0.0" />
+		<PackageReference Include="velocist.Web" Version="1.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\velocist\velocist.DataAccess\velocist.DataAccess.csproj" />
-		<ProjectReference Include="..\..\velocist\velocist.LogService\velocist.LogService.csproj" />
-		<ProjectReference Include="..\..\velocist\velocist.Services\velocist.Services.csproj" />
-		<ProjectReference Include="..\..\velocist\velocist.Web\velocist.Web.csproj" />
 		<ProjectReference Include="..\Genealogy.Business\Genealogy.Business.csproj" />
 		<ProjectReference Include="..\Genealogy.Common\Genealogy.Common.csproj" />
 		<ProjectReference Include="..\Genealogy.IdentityService\Genealogy.IdentityService.csproj" />
