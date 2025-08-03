@@ -1,6 +1,4 @@
-﻿using velocist.Services.Json.Serialization;
-
-namespace Genealogy.Controllers {
+﻿namespace Genealogy.WebApplication.Controllers {
 	public class FileViewerController : BaseController<FileViewerController, FileViewerModel> {
 
 		/// <summary>
@@ -49,9 +47,7 @@ namespace Genealogy.Controllers {
 					}
 
 					var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wwwroot", "files", file.FileName);
-					if (System.IO.File.Exists(path)) {
-						System.IO.File.Delete(path);
-					}
+					if (System.IO.File.Exists(path)) 						System.IO.File.Delete(path);
 
 					//Copy file to import
 					var pathCopy = FilesHelper.CopyFile(file, path);
@@ -61,7 +57,7 @@ namespace Genealogy.Controllers {
 						model = ExportExcel<FileViewerModel>.Import(pathCopy, row);
 						if (model != null) {
 							ViewData.Model = model;
-							return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, model, statusCode: StatusCodes.Status200OK);
+							return await ShowRenderView(ReturnViewTypeId.PartialView, model, statusCode: StatusCodes.Status200OK);
 						} else {
 							ModelState.AddModelError(string.Empty, "Error al importar el archivo.");
 							return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, statusCode: StatusCodes.Status400BadRequest);
@@ -87,8 +83,7 @@ namespace Genealogy.Controllers {
 			PropertiesView = Views.CustomViewModels.Find(x => x.ViewType == ReturnViewTypeId.View && x.ActionName == nameof(Index) && x.ControllerName == ControllerName);
 			//var model = new FileViewerModel();
 			try {
-				if (model != null) {
-					////Check format file
+				if (model != null) 					////Check format file
 					//if (!file.FileName.EndsWith(".csv") && !file.FileName.EndsWith(".xsl") && !file.FileName.EndsWith(".xlsx")) {
 					//	ModelState.AddModelError(string.Empty, _sharedTranslations["Selecciona un archivo .csv, .xls o .xlsx"]);
 					//	return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, statusCode: StatusCodes.Status400BadRequest);
@@ -110,16 +105,12 @@ namespace Genealogy.Controllers {
 
 					if (model != null) {
 						ViewData.Model = model;
-						return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, model, statusCode: StatusCodes.Status200OK);
+						return await ShowRenderView(ReturnViewTypeId.PartialView, model, statusCode: StatusCodes.Status200OK);
 					} else {
 						ModelState.AddModelError(string.Empty, "Error al importar el archivo.");
 						return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, statusCode: StatusCodes.Status400BadRequest);
 					}
-					//} else {
-					//	ModelState.AddModelError(string.Empty, WebStrings.ERROR_BAD_REQUEST);
-					//	return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, statusCode: StatusCodes.Status400BadRequest);
-					//}
-				} else {
+else {
 					ModelState.AddModelError(string.Empty, WebStrings.ERROR_BAD_REQUEST);
 					return await ShowRenderView<FileViewerModel>(ReturnViewTypeId.PartialView, statusCode: StatusCodes.Status400BadRequest);
 				}
@@ -154,9 +145,8 @@ namespace Genealogy.Controllers {
 
 				var fileBytes = System.IO.File.ReadAllBytes(filePath);
 				FileResult archivo = File(fileBytes, "multipart/form-data", fileName); //application/force-download
-				if (archivo != null) {
-					return archivo;
-				} else {
+				if (archivo != null) 					return archivo;
+else {
 					TempData["Message"] = WebStrings.ERROR_SERVER;//ModelState.AddModelError(string.Empty, Strings.ERROR_SERVER);
 					return await Task.FromResult(RedirectToAction(nameof(HomeController.Index)));
 				}

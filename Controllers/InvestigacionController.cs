@@ -1,6 +1,4 @@
-﻿using velocist.Services.Json.Serialization;
-
-namespace Genealogy.WebApplication.Controllers {
+﻿namespace Genealogy.WebApplication.Controllers {
 
 	public class InvestigacionController : BaseServiceController<InvestigacionController, InvestigacionModel, Investigacion> {
 

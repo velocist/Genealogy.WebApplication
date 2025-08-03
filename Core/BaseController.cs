@@ -1,6 +1,4 @@
-﻿using System.Net.Http;
-using System.Net.Http.Json;
-using Genealogy.Business.Core;
+﻿using Genealogy.Business.Core;
 
 namespace Genealogy.WebApplication.Core {
 	public class BaseServiceController<TController, TModel, TEntity> : BaseController<TController, TModel>

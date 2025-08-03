@@ -96,9 +96,12 @@
 		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
 		<PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.7" />
 		<PackageReference Include="System.Diagnostics.PerformanceCounter" Version="9.0.7" />
-		<PackageReference Include="velocist.DataAccess" Version="1.0.1-debug" />
-		<PackageReference Include="velocist.LogService" Version="1.0.1-debug" />
-		<PackageReference Include="velocist.Web" Version="1.0.1-debug" />
+		<PackageReference Include="velocist.DataAccess" Version="2.0.2-debug" />
+		<PackageReference Include="velocist.EmailService" Version="2.0.2-debug" />
+		<PackageReference Include="velocist.FileIOManager" Version="2.0.2-debug" />
+		<PackageReference Include="velocist.LogService" Version="2.0.2-debug" />
+		<PackageReference Include="velocist.Serialization" Version="2.0.2-debug" />
+		<PackageReference Include="velocist.Web" Version="2.0.2-debug" />
 	</ItemGroup>
 
 	<ItemGroup>
